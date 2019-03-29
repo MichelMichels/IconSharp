@@ -18,4 +18,4 @@ See also the list of [contributors](https://github.com/MichelMichels/IconSharp/c
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
