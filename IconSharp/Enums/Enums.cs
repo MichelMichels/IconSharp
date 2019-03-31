@@ -3,7 +3,7 @@ namespace IconSharp.Enums
 {
     public enum ImageType : ushort
     {
-        PNG = 1,
+        ICO = 1,
         CUR = 2,
     }
 }

@@ -5,8 +5,17 @@ namespace IconSharp
 {
     public class IcoImageEntry : ImageEntry
     {
-        public byte ColorPlanes { get; set; }
-        public byte BitsPerPixel { get; set; }
+        protected internal IcoImageEntry()
+        {
+
+        }
+        protected internal IcoImageEntry(byte[] bytes)
+        {
+            SetBytes(bytes);
+        }
+
+        public ushort ColorPlanes { get; set; }
+        public ushort BitsPerPixel { get; set; }
 
         public override void SetBytes(byte[] bytes)
         {
@@ -16,10 +25,11 @@ namespace IconSharp
                 Width = reader.ReadByte();
                 Height = reader.ReadByte();
                 NumberOfColors = reader.ReadByte();
-                ColorPlanes = reader.ReadByte();
-                BitsPerPixel = reader.ReadByte();
-                ByteSize = reader.ReadInt32();
-                Offset = reader.ReadInt32();
+                reader.ReadByte();
+                ColorPlanes = reader.ReadUInt16();
+                BitsPerPixel = reader.ReadUInt16();
+                ByteSize = reader.ReadUInt32();
+                Offset = reader.ReadUInt32();
             }
         }
         public override byte[] GetBytes()

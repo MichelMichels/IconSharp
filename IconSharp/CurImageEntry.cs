@@ -5,13 +5,17 @@ namespace IconSharp
 {
     public class CurImageEntry : ImageEntry
     {
-        public CurImageEntry(byte[] bytes)
+        protected internal CurImageEntry() : base()
+        {
+
+        }
+        protected internal CurImageEntry(byte[] bytes)
         {
             SetBytes(bytes);
         }
 
-        public byte LeftCenterOffset { get; set; }
-        public byte TopCenterOffset { get; set; }
+        public ushort LeftCenterOffset { get; set; }
+        public ushort TopCenterOffset { get; set; }
 
         public override void SetBytes(byte[] bytes)
         {
@@ -21,10 +25,11 @@ namespace IconSharp
                 Width = reader.ReadByte();
                 Height = reader.ReadByte();
                 NumberOfColors = reader.ReadByte();
-                LeftCenterOffset = reader.ReadByte();
-                TopCenterOffset = reader.ReadByte();
-                ByteSize = reader.ReadInt32();
-                Offset = reader.ReadInt32();
+                reader.ReadByte();
+                LeftCenterOffset = reader.ReadUInt16();
+                TopCenterOffset = reader.ReadUInt16();
+                ByteSize = reader.ReadUInt32();
+                Offset = reader.ReadUInt32();
             }
         }
         public override byte[] GetBytes()

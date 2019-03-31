@@ -6,15 +6,18 @@ namespace IconSharp
 {
     public class Header : IByteConvertible
     {
-        internal Header()
+        private Header()
         {
-            ImageType = ImageType.PNG;
+            ImageType = ImageType.ICO;
             NumberOfImages = 1;
         }
-        internal Header(byte[] bytes)
+        private Header(byte[] bytes)
         {
             SetBytes(bytes);
         }
+
+        public static Header CreateNew() => new Header();
+        public static Header FromBytes(byte[] bytes) => new Header(bytes);
 
         public ushort Reserved => 0;
         public ImageType ImageType { get; set; }
